@@ -5,5 +5,5 @@ Eine React-Anwendung, die eine Liste aller Adressen von Kölner Tankstellen dars
 ## Features
 
 - Suchfunktion zum Filtern der Adressen
-- Anzeige der Adressen in einer übersichtlichen Tabelle mit Pagination und Sotierfunktion
+- Anzeige der Adressen in einer übersichtlichen Tabelle mit Pagination und Sortierfunktion
 - Responsive Design für mobile und Desktop-Geräte
