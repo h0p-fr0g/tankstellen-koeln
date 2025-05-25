@@ -38,6 +38,16 @@ function TankstellenTable({ data, sortDirection, setSortDirection }) {
 
       {/* Mobile Ansicht */}
       <div className="block md:hidden space-y-4">
+        {/* Sortier-Button für Mobile */}
+        <div className="flex justify-end mb-2">
+          <button
+            onClick={handleSortClick}
+            className="text-sm bg-gray-100 px-3 py-1 rounded shadow-sm hover:bg-gray-200 transition"
+          >
+            Sortieren: {sortDirection === "asc" ? "A–Z ▲" : "Z–A ▼"}
+          </button>
+        </div>
+
         {data.map((t) => (
           <div
             key={t.id}
@@ -58,6 +68,7 @@ function TankstellenTable({ data, sortDirection, setSortDirection }) {
           </div>
         ))}
       </div>
+
     </>
   );
 }
