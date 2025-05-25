@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Search from "./components/Search";
+import EntriesPerPageSelector from "./components/EntriesPerPageSelector";
 import TankstellenTabelle from "./components/TankstellenTable";
 import Pagination from "./components/Pagination";
-import EntriesPerPageSelector from "./components/EntriesPerPageSelector";
 
 
 function App() {
@@ -29,6 +29,13 @@ function App() {
       });
   }, []);
 
+//Sobald etwas gesucht wird, springen auf Seite 1
+useEffect(() => {
+  if (search) {
+    setPage(1);
+  }
+}, [search]);
+
   const filtered = tankstellen.filter((t) =>
     t.address.toLowerCase().includes(search.toLowerCase())
   );
@@ -36,10 +43,10 @@ function App() {
   function normalize(str) {
     return str
       .toLowerCase()
-      .replace(/ä/g, "ae")
-      .replace(/ö/g, "oe")
-      .replace(/ü/g, "ue")
-      .replace(/ß/g, "ss");
+      .replace(/ä/g, "a")
+      .replace(/ö/g, "o")
+      .replace(/ü/g, "u")
+      .replace(/ß/g, "s");
   }
   
   const sorted = [...filtered].sort((a, b) => {

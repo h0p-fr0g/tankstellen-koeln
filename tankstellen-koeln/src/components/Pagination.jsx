@@ -21,7 +21,7 @@ function Pagination({ pageCount, page, setPage }) {
       range.push(addButton(i));
     }
   } else {
-    range.push(addButton(1)); // erste Seite
+    range.push(addButton(1));
 
     const start = Math.max(2, page - 2);
     const end = Math.min(pageCount - 1, page + 2);
@@ -38,7 +38,7 @@ function Pagination({ pageCount, page, setPage }) {
       range.push(<span key="end-ellipsis" className="px-2">…</span>);
     }
 
-    range.push(addButton(pageCount)); // letzte Seite
+    range.push(addButton(pageCount));
   }
 
   return <div className="flex flex-wrap gap-2 mt-6 justify-center">{range}</div>;

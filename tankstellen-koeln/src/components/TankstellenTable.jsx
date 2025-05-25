@@ -1,6 +1,5 @@
 import Tankstelle from "./Tankstelle";
 
-
 function TankstellenTable({ data, sortDirection, setSortDirection }) {
   const handleSortClick = () => {
     setSortDirection((prev) => (prev === "asc" ? "desc" : "asc"));
@@ -9,31 +8,57 @@ function TankstellenTable({ data, sortDirection, setSortDirection }) {
   const sortIcon = sortDirection === "asc" ? "▲" : "▼";
 
   return (
-    <div className="overflow-x-auto shadow-md rounded-lg border border-gray-200">
-      <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-gray-50">
-          <tr>
-            <th
-              onClick={handleSortClick}
-              className="cursor-pointer px-6 py-3 text-left text-sm font-semibold text-gray-700 tracking-wider select-none"
-            >
-              Straßenname <span className="ml-1">{sortIcon}</span>
-            </th>
-            <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700 tracking-wider">
-              X-Koordinate
-            </th>
-            <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700 tracking-wider">
-              Y-Koordinate
-            </th>
-          </tr>
-        </thead>
-        <tbody className="bg-white divide-y divide-gray-100">
-          {data.map((t) => (
-            <Tankstelle key={t.id} address={t.address} x={t.x} y={t.y} />
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <>
+      {/* Desktop Ansicht */}
+      <div className="hidden md:block overflow-x-auto w-full">
+        <table className="min-w-full table-auto">
+          <thead className="bg-gray-50">
+            <tr>
+              <th
+                onClick={handleSortClick}
+                className="cursor-pointer px-6 py-3 text-left text-sm font-semibold text-gray-700 tracking-wider select-none"
+              >
+                Straßenname <span className="ml-1">{sortIcon}</span>
+              </th>
+              <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700 tracking-wider">
+                X-Koordinate
+              </th>
+              <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700 tracking-wider">
+                Y-Koordinate
+              </th>
+            </tr>
+          </thead>
+          <tbody className="bg-white divide-y divide-gray-100">
+            {data.map((t) => (
+              <Tankstelle key={t.id} address={t.address} x={t.x} y={t.y} />
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Mobile Ansicht */}
+      <div className="block md:hidden space-y-4">
+        {data.map((t) => (
+          <div
+            key={t.id}
+            className="border border-gray-200 rounded-lg p-4 shadow-sm bg-white"
+          >
+            <div className="mb-2">
+              <span className="font-semibold text-gray-600">Straßenname:</span>{" "}
+              {t.address}
+            </div>
+            <div className="mb-1">
+              <span className="font-semibold text-gray-600">X-Koordinate:</span>{" "}
+              {t.x}
+            </div>
+            <div>
+              <span className="font-semibold text-gray-600">Y-Koordinate:</span>{" "}
+              {t.y}
+            </div>
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
 
