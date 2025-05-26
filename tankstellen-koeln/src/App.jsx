@@ -126,6 +126,16 @@ function App() {
               />
             </div>
 
+            {/* Top pagination - only for mobile */}
+            <div className="block md:hidden mb-4">
+              <Pagination
+                pageCount={pageCount}
+                page={page}
+                setPage={setPage}
+              />
+            </div>
+
+
             <TankstellenTabelle
               data={currentPage}
               sortDirection={sortDirection}
@@ -138,7 +148,9 @@ function App() {
       )}
 
       {/* Scroll to Top Button */}
-      {showUpButton && <UpButton onClick={scrollToTop} />}
+      {showUpButton && 
+      <UpButton onClick={scrollToTop} />
+      }
     </div>
   );
 }

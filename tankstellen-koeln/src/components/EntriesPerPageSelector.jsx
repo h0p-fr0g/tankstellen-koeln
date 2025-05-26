@@ -8,7 +8,7 @@ function EntriesPerPageSelector({ value, onEntriesPerPageChange }) {
           id="entries"
           value={value}
           onChange={(e) => onEntriesPerPageChange(Number(e.target.value))}
-          className="px-4 py-1 border rounded-md bg-white"
+          className="px-4 h-8 border rounded-md bg-white text-sm"
         >
           {[10, 20, 50, 100].map((n) => (
             <option key={n} value={n}>
